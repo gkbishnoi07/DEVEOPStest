@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "test": "echo 'No tests defined' && exit 0",
-    "build" : "echo 'No build step defined' && exit 0"
+    "build" : "echo 'No build step defined' && exit 0",
+    "lint": "eslint ."
   },
   "dependencies": {
     "express": "^4.18.2"
