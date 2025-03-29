@@ -2,6 +2,11 @@ pipeline {
     agent any
     
     stages {
+        stage('Clone Repository') {
+            steps {
+                git branch: 'main', url: 'https://github.com/gkbishnoi07/DEVEOPStest.git'
+            }
+        }
     
         stage('npm install') {
             steps {
@@ -21,5 +26,4 @@ pipeline {
             }
         }
     }
-    
 }
