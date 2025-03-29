@@ -10,19 +10,19 @@ pipeline {
         
         stage('Install Dependencies') {
             steps {
-                echo 'npm install'
+                sh 'npm install'
             }
         }
         
         stage('Run Tests') {
             steps {
-                echo 'npm test || echo "No tests defined"'
+                sh 'npm test || echo "No tests defined"'
             }
         }
         
         stage('Build Application') {
             steps {
-                echo 'npm run build'
+                sh 'npm run build'
             }
         }
     }
