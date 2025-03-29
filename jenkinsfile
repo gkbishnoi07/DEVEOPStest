@@ -26,6 +26,12 @@ pipeline {
             }
         }
         
+        stage(`Run Version Check`) {
+            steps {
+                sh 'npm run version'
+            }
+        }
+        
         stage('Build Application') {
             steps {
                 sh 'npm run build'
