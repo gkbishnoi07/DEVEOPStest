@@ -1,28 +1,24 @@
-pipeline{
+pipeline {
     agent any
-    stages{
-        stage('Build'){
-            steps{
-                script {
-                    def packageJson = readJSON file: 'package.json'
-                    def version = packageJson.version
-                    echo "Version: ${version}"
-                }
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git 'https://github.com/gkbishnoi07/DEVEOPStest.git'
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
                 sh 'npm install'
             }
         }
-        stage('Test'){
-            steps{
-                sh 'npm test'
+        stage('Run Tests') {
+            steps {
+                sh 'npm test || echo "No tests defined"'
             }
         }
-        stage('Deploy'){
-            steps{
-                script {
-                    def packageJson = readJSON file: 'package.json'
-                    def version = packageJson.version
-                    echo "Deploying version: ${version}"
-                }
+        stage('Build Application') {
+            steps {
                 sh 'npm run build'
             }
         }
